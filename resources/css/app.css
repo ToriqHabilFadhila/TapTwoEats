@@ -1,0 +1,50 @@
+/* resources/css/app.css */
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* Custom Colors untuk TapTwoEats */
+    --color-tap-blue-dark: #1e3a5f;
+    --color-tap-blue: #2563eb;
+    --color-tap-cyan: #06b6d4;
+    --color-tap-slate: #0f172a;
+
+    /* Custom Animations */
+    --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom Classes untuk Navbar */
+.nav-link {
+    @apply text-gray-300 hover:text-cyan-400 font-medium transition-colors duration-300 flex items-center;
+}
+
+.nav-link.active {
+    @apply text-cyan-400 font-semibold;
+}
+
+.dropdown-item {
+    @apply block px-4 py-3 text-gray-300 hover:bg-slate-700 hover:text-cyan-400 transition-all duration-300;
+}
+
+.dropdown-item:first-child {
+    @apply rounded-t-lg;
+}
+
+.dropdown-item:last-child {
+    @apply rounded-b-lg;
+}
+
+.mobile-nav-link {
+    @apply block px-4 py-3 text-gray-300 hover:bg-slate-700 hover:text-cyan-400 rounded-lg transition-all duration-300;
+}
+
+.minimal-nav-link {
+    @apply px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-slate-700/50 transition-all duration-300 text-sm font-medium;
+}
