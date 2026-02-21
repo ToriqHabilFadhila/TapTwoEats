@@ -1,10 +1,4 @@
-{{-- ══════════════════════════════════════════════
-     resources/views/components/navbar.blade.php
-     TAPTWOÉATS — Soft White Glass Navbar
-══════════════════════════════════════════════ --}}
-
 <style>
-    /* ── Navbar Glass ── */
     .tte-nav {
         position: sticky;
         top: 0;
@@ -27,7 +21,6 @@
         gap: 1.5rem;
     }
 
-    /* ── Logo ── */
     .tte-logo {
         display: flex;
         align-items: center;
@@ -61,7 +54,8 @@
         letter-spacing: -0.01em;
     }
 
-    .tte-logo-tap, .tte-logo-eats {
+    .tte-logo-tap,
+    .tte-logo-eats {
         background: linear-gradient(135deg, #1e3a8a, #4F7EF7);
         -webkit-background-clip: text;
         background-clip: text;
@@ -75,7 +69,6 @@
         -webkit-text-fill-color: transparent;
     }
 
-    /* ── Nav Links ── */
     .tte-nav-links {
         display: flex;
         align-items: center;
@@ -116,7 +109,6 @@
         flex-shrink: 0;
     }
 
-    /* ── Dropdown ── */
     .tte-dropdown {
         position: relative;
     }
@@ -218,7 +210,6 @@
         flex-shrink: 0;
     }
 
-    /* ── Right Actions ── */
     .tte-nav-right {
         display: flex;
         align-items: center;
@@ -226,7 +217,6 @@
         flex-shrink: 0;
     }
 
-    /* Search Input */
     .tte-search-wrap {
         position: relative;
     }
@@ -266,7 +256,6 @@
         pointer-events: none;
     }
 
-    /* Cart Button */
     .tte-cart-btn {
         position: relative;
         width: 40px;
@@ -312,7 +301,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 2px solid rgba(255,255,255,0.9);
+        border: 2px solid rgba(255, 255, 255, 0.9);
         font-family: 'Bricolage Grotesque', sans-serif;
     }
 
@@ -325,7 +314,6 @@
         display: block;
     }
 
-    /* Login Button */
     .tte-login-btn {
         display: inline-flex;
         align-items: center;
@@ -350,7 +338,6 @@
         box-shadow: 0 8px 24px rgba(79, 126, 247, 0.45);
     }
 
-    /* ── Hamburger ── */
     .tte-hamburger {
         display: none;
         width: 40px;
@@ -375,7 +362,6 @@
         color: #4F7EF7;
     }
 
-    /* ── Mobile Menu ── */
     .tte-mobile-menu {
         display: none;
         background: rgba(255, 255, 255, 0.88);
@@ -429,32 +415,37 @@
         margin-top: 12px;
     }
 
-    /* ── Responsive ── */
     @media (max-width: 900px) {
-        .tte-nav-links { display: none; }
-        .tte-search-wrap { display: none; }
-        .tte-hamburger { display: flex; }
+        .tte-nav-links {
+            display: none;
+        }
+        .tte-search-wrap {
+            display: none;
+        }
+        .tte-hamburger {
+            display: flex;
+        }
     }
 
     @media (max-width: 600px) {
-        .tte-nav-right .tte-login-btn { display: none; }
+        .tte-nav-right .tte-login-btn {
+            display: none;
+        }
     }
 </style>
 
 <nav class="tte-nav">
     <div class="tte-nav-inner">
-        {{-- ── Logo ── --}}
         <a href="{{ route('home') }}" class="tte-logo">
-            <div class="tte-logo-icon">🍽️</div>
+            <img src="{{ asset('images/TapTwoEats.png') }}" alt="TapTwoEats Logo" width="60" height="60" style="object-fit:contain;">
             <span class="tte-logo-text">
                 <span class="tte-logo-tap">Tap</span><span class="tte-logo-two">Two</span><span class="tte-logo-eats">Eats</span>
             </span>
         </a>
-        {{-- ── Desktop Nav Links ── --}}
         <nav class="tte-nav-links">
             <a href="{{ route('home') }}" class="tte-nav-link {{ request()->routeIs('home') ? 'active' : '' }}">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
                 Home
             </a>
@@ -464,82 +455,93 @@
                 </svg>
                 Restaurants
             </a>
+            <a href="{{ route('menu.all') }}" class="tte-nav-link {{ request()->routeIs('menu.all') ? 'active' : '' }}">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>
+                </svg>
+                Menu
+            </a>
             <a href="{{ route('about') }}" class="tte-nav-link {{ request()->routeIs('about') ? 'active' : '' }}">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 About
             </a>
             <a href="{{ route('contact') }}" class="tte-nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 Contact
             </a>
         </nav>
-        {{-- ── Right Side ── --}}
         <div class="tte-nav-right">
-            {{-- Search --}}
             <div class="tte-search-wrap">
                 <svg class="tte-search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
                 <input type="text" placeholder="Search food..." class="tte-search-input">
             </div>
-            {{-- Cart --}}
             <a href="{{ route('cart') }}" class="tte-cart-btn">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
                 <span class="tte-cart-badge" id="cart-badge">3</span>
             </a>
-            {{-- Login --}}
-            <a href="#" class="tte-login-btn">
+            <a href="{{ route('login') }}" class="tte-login-btn">
                 <svg style="width:14px; height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
                 Login
             </a>
-            {{-- Hamburger --}}
             <button class="tte-hamburger" id="tte-hamburger-btn" aria-label="Toggle menu">
                 <svg id="tte-hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
         </div>
     </div>
-
-    {{-- ── Mobile Menu ── --}}
     <div class="tte-mobile-menu" id="tte-mobile-menu">
         <a href="{{ route('home') }}" class="tte-mobile-link {{ request()->routeIs('home') ? 'active' : '' }}">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
             Home
         </a>
         <a href="{{ route('restaurants') }}" class="tte-mobile-link {{ request()->routeIs('restaurants') ? 'active' : '' }}">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
             Restaurants
         </a>
+        <a href="{{ route('menu.all') }}" class="tte-nav-link {{ request()->routeIs('menu.all') ? 'active' : '' }}">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>
+            </svg>
+            Menu
+        </a>
         <a href="{{ route('about') }}" class="tte-mobile-link {{ request()->routeIs('about') ? 'active' : '' }}">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
             About
         </a>
         <a href="{{ route('contact') }}" class="tte-mobile-link {{ request()->routeIs('contact') ? 'active' : '' }}">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
             Contact
         </a>
         <div class="tte-mobile-divider"></div>
-        {{-- Mobile search --}}
         <div style="position:relative; margin-bottom:10px;">
             <svg style="position:absolute; left:12px; top:50%; transform:translateY(-50%); width:15px; height:15px; color:#9aa5c0;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             <input type="text" placeholder="Search food..." style="width:100%;background:rgba(239,243,255,0.8);border:1.5px solid rgba(79,126,247,0.15);border-radius:12px;padding:10px 14px 10px 36px;font-family:'Bricolage Grotesque',sans-serif;font-size:0.88rem;color:#18243e;outline:none;">
         </div>
         <div class="tte-mobile-actions">
-            {{-- Cart --}}
             <a href="{{ route('cart') }}" style="flex:1; display:flex; align-items:center; justify-content:center; gap:8px; padding:11px; background:rgba(79,126,247,0.08); border:1.5px solid rgba(79,126,247,0.18); border-radius:12px; font-weight:700; font-size:0.88rem; color:#4F7EF7; text-decoration:none;">
                 <svg style="width:16px; height:16px; display:block;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4 M7 13L5.4 5 M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17 m0 0a2 2 0 100 4 2 2 0 000-4 zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4 M7 13L5.4 5 M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17 m0 0a2 2 0 100 4 2 2 0 000-4 zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
                 <span style="display:inline-flex; align-items:center; gap:6px;">
                     Cart
@@ -552,26 +554,25 @@
             </a>
             <a href="#" style="flex:1; display:flex; align-items:center; justify-content:center; gap:6px; padding:11px; line-height:1; background:linear-gradient(135deg,#4F7EF7,#22D3EE); border-radius:12px; font-weight:700; font-size:0.88rem; color:white; text-decoration:none; box-shadow:0 4px 14px rgba(79,126,247,0.3);">
                 <svg style="width:14px; height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
                 Login
             </a>
         </div>
     </div>
 </nav>
-
 <script>
-(function() {
-    const btn = document.getElementById('tte-hamburger-btn');
-    const menu = document.getElementById('tte-mobile-menu');
-    const icon = document.getElementById('tte-hamburger-icon');
-    if (!btn) return;
-    btn.addEventListener('click', function() {
-        const isOpen = menu.classList.toggle('open');
-        icon.querySelector('path').setAttribute('d',
-            isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'
-        );
-        btn.style.background = isOpen ? 'rgba(79,126,247,0.14)' : '';
-    });
-})();
+    (function() {
+        const btn = document.getElementById('tte-hamburger-btn');
+        const menu = document.getElementById('tte-mobile-menu');
+        const icon = document.getElementById('tte-hamburger-icon');
+        if (!btn) return;
+        btn.addEventListener('click', function() {
+            const isOpen = menu.classList.toggle('open');
+            icon.querySelector('path').setAttribute('d',
+                isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'
+            );
+            btn.style.background = isOpen ? 'rgba(79,126,247,0.14)' : '';
+        });
+    })();
 </script>

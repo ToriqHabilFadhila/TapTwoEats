@@ -39,3 +39,12 @@ Route::get('/contact', function () {
 Route::get('/cart', function () {
     return view('cart.index');
 })->name('cart');
+
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
+
